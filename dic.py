@@ -9,15 +9,28 @@ def average_count(filename):
 			count += 1
 		if count % 1000 == 0:
 			print(len(data))
+	print('档案共有，总共有',len(data),'笔资料' )
+	
+	newlen = []
+	for d in data:
+		if len(d) < 100:
+			newlen.append(d)
+	print('一共有',len(newlen),'笔留言小于100')
 
-		print('档案共有，总共有',len(data),'笔资料' )
-		newlen = []
-		for d in data:
-			if len(d) < 100:
-				newlen.append(d)
-		print('一共有',len(newlen),'笔留言小于100')
+	sum_len = 0
+	for d in data:
+		sum_len = sum_len +len(d)
+	print('The average length of reviews is ',sum_len/len(data))
+
+	#快写法
+	good = []
+	for d in data:
+		if 'good' in d:
+			good.append(d)
+	print('一共有',len(good),'笔留言提到good')
+
 		#print(newlen[])
-
+# 文字的计数以及查询
 def extract(filename):
 	with open(filename,'r',encoding = 'utf-8-sig') as d:
 		wc = {}
